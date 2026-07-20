@@ -1,1 +1,23 @@
+#experiment 1.1 - Contains Duplicate I
 
+class Solution:
+    def containsDuplicate(self, nums):
+        seen = set()
+        for num in nums:
+            if num in seen:
+                return True
+            seen.add(num)
+        return False
+
+
+#experiment 1.2 - Contains Duplicate II
+
+class Solution:
+    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+        dict={}
+        for i in range(len(nums)):
+            if nums[i] in dict:
+                if abs(i - dict[nums[i]] <= k):
+                    return True
+            dict[nums[i]] = i
+        return False
